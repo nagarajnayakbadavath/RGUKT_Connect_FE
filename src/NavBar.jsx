@@ -43,7 +43,9 @@ const NavBar = () => {
         {user && <li>
           <Link to="/profile/view" className="justify-between">
             Profile
-            <span className="badge">New</span>
+          </Link>
+          <Link to="/requests/recieved" className="justify-between">
+            Requests Received
           </Link>
         </li> }
         {!user && <li><Link to="/signup">SignUp</Link></li>}

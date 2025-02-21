@@ -25,7 +25,7 @@ const Login = ({isSignup}) => {
         password,
       },{withCredentials:true});
       dispatch(addUser(res.data));
-    
+      navigate("/feed");
     }catch(err){
       console.log(err.message);
     }
