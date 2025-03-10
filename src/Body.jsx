@@ -1,20 +1,21 @@
-import React, { useEffect } from 'react'
-import { Outlet, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import NavBar from './NavBar';
 import Footer from './Footer';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser } from './utils/userSlice';
+import UserCards from './UserCards';
+import Feed from './Feed';
 
 const Body = () => {
   const dispatch=useDispatch();
   const navigate=useNavigate();
-
-
+  const [users,setUsers]=useState({});
+  const location=useLocation();
   
 
   useEffect(()=>{
-    // fetchUser();
     const fetchUser=async()=>{
       try{
         const res=await axios.get("http://localhost:3000/profile/view",{withCredentials:true});
@@ -24,12 +25,35 @@ const Body = () => {
       }
     }
     fetchUser();
-  },[])
+  },[]);
+
+  const fetchUser=async()=>{
+    try{
+      const res=await axios.get("http://localhost:3000/users",{withCredentials:true});
+      const filteredUsers=setUsers(res.data.filter(user=>user.emailId!==localStorage.getItem("userEmail")));
+    }catch(err){
+      console.log(err.message);
+    }
+  }
+
+ 
+
+  useEffect(()=>{
+    if(!localStorage.getItem("userEmail")){
+      const email=prompt("enter your email:");
+      if(email){
+        localStorage.setItem("userEmail",email);
+      }
+    }
+    fetchUser();
+  },[]);
 
   return (
     <div>
       <NavBar/>
       <Outlet/>
+      {(location.pathname==="/" || location.pathname==="/feed")  && <Feed users={users}/>}
+      {/* <Feed users={users}/> */}
       {/* <Footer/> */}
     </div>
   )

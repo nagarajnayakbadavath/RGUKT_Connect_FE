@@ -42,7 +42,7 @@ const Login = ({isSignup}) => {
         skills,
         photourl,
       },{withCredentials:true});
-      return navigate("/login");
+      navigate("/login");
     }catch(err){
       setError(true);
       console.log("FE ERR",err.message);
