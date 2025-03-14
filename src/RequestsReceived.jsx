@@ -18,7 +18,7 @@ const RequestsReceived = () => {
 
   const fetchRequests = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/requests/recieved", {
+      const res = await axios.get("https://rgukt-connect.vercel.app/requests/recieved", {
         withCredentials: true,
       });
       console.log(res.data);

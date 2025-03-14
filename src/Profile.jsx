@@ -23,7 +23,7 @@ const Profile = () => {
     if(!user){
     const fetchUser=async()=>{
       try{
-        const res=await axios.get("http://localhost:3000/profile/view",{withCredentials:true});
+        const res=await axios.get("https://rgukt-connect.vercel.app/profile/view",{withCredentials:true});
         dispatch(addUser(res.data));
       }catch(err){
         console.log(err.message);
@@ -47,7 +47,7 @@ const Profile = () => {
   
   const profileEdit=async()=>{
         try{
-          const res=await axios.put("http://localhost:3000/profile/edit",{
+          const res=await axios.put("https://rgukt-connect.vercel.app/profile/edit",{
             firstName,
             lastName,
             about,
