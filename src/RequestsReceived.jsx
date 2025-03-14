@@ -18,7 +18,7 @@ const RequestsReceived = () => {
 
   const fetchRequests = async () => {
     try {
-      const res = await axios.get("https://rgukt-connect.vercel.app/requests/recieved", {
+      const res = await axios.get("https://rgukt-connect.vercel.app/api/requests/recieved", {
         withCredentials: true,
       });
       console.log(res.data);
@@ -32,7 +32,7 @@ const RequestsReceived = () => {
     try {
       setButton(false);
       const res = await axios.get(
-        `https://rgukt-connect.vercel.app/user/profile/${senderId}`,
+        `https://rgukt-connect.vercel.app/user/api/profile/${senderId}`,
         { withCredentials: true }
       );
       console.log(res.data);
