@@ -32,7 +32,7 @@ const RequestsReceived = () => {
     try {
       setButton(false);
       const res = await axios.get(
-        `https://rgukt-connect.vercel.app/user/profile/${senderId}`,
+        `http://localhost:3000/user/profile/${senderId}`,
         { withCredentials: true }
       );
       console.log(res.data);

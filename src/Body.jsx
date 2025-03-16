@@ -18,7 +18,7 @@ const Body = () => {
   useEffect(()=>{
     const fetchUser=async()=>{
       try{
-        const res=await axios.get("https://rgukt-connect.vercel.app/profile/view",{withCredentials:true});
+        const res=await axios.get("https://rgukt-connect.vercel.app//profile/view",{withCredentials:true});
         dispatch(addUser(res.data));
       }catch(err){
         console.log("Error FE ",err.message);
