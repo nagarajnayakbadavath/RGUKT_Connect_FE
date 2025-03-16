@@ -13,7 +13,7 @@ const NavBar = () => {
 
   const handleLogout=async()=>{
     try{
-      const res=await axios.post("https://rgukt-connect.vercel.app/logout",{},{withCredentials:true});
+      const res=await axios.post("http://localhost:3000/logout",{},{withCredentials:true});
       dispatch(removeUser());
       return navigate('/feed');
     }catch(err){
