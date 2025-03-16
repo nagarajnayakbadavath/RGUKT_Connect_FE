@@ -18,7 +18,7 @@ const Body = () => {
   useEffect(()=>{
     const fetchUser=async()=>{
       try{
-        const res=await axios.get("https://rgukt-connect.vercel.app/api/profile/view",{withCredentials:true});
+        const res=await axios.get("https://rgukt-connect.vercel.app/profile/view",{withCredentials:true});
         dispatch(addUser(res.data));
       }catch(err){
         console.log("Error FE ",err.message);
@@ -29,7 +29,7 @@ const Body = () => {
 
   const fetchUser=async()=>{
     try{
-      const res=await axios.get("https://rgukt-connect.vercel.app/api/users",{withCredentials:true});
+      const res=await axios.get("https://rgukt-connect.vercel.app/users",{withCredentials:true});
       const filteredUsers=setUsers(res.data.filter(user=>user.emailId!==localStorage.getItem("userEmail")));
     }catch(err){
       console.log(err.message);

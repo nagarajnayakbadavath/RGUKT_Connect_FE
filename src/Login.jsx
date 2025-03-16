@@ -20,7 +20,7 @@ const Login = ({isSignup}) => {
 
   const handleLogin=async()=>{
     try{
-      const res=await axios.post('https://rgukt-connect.vercel.app/api/login',{
+      const res=await axios.post('https://rgukt-connect.vercel.app/login',{
         emailId,
         password,
       },{withCredentials:true});
@@ -33,7 +33,7 @@ const Login = ({isSignup}) => {
 
   const handleSignUp=async()=>{
     try{
-      const res=await axios.post("https://rgukt-connect.vercel.app/api/signup",{
+      const res=await axios.post("https://rgukt-connect.vercel.app/signup",{
         emailId,
         password,
         firstName,
