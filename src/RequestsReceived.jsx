@@ -18,7 +18,7 @@ const RequestsReceived = () => {
 
   const fetchRequests = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/requests/recieved", {
+      const res = await axios.get("http://localhost:3001/requests/recieved", {
         withCredentials: true,
       });
       console.log(res.data);
@@ -32,7 +32,7 @@ const RequestsReceived = () => {
     try {
       setButton(false);
       const res = await axios.get(
-        `http://localhost:3000/user/profile/${senderId}`,
+        `http://localhost:3001/user/profile/${senderId}`,
         { withCredentials: true }
       );
       console.log(res.data);
