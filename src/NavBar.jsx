@@ -15,7 +15,7 @@ const NavBar = () => {
     try{
       const res=await axios.post("http://localhost:3001/logout",{},{withCredentials:true});
       dispatch(removeUser());
-      return navigate('/feed');
+      return navigate('/');
     }catch(err){
       console.log(err.message);
     }
@@ -27,7 +27,7 @@ const NavBar = () => {
     <div>
             <div className="navbar bg-base-300">
               <div className="flex-1">
-    <Link to="/feed" className="btn  normal-case text-xl text-white">RGUKT_Connect</Link>
+    <Link to="/feed" className="btn  normal-case text-xl text-white animate-zoom  h-10 object-contain">RGUKT_Connect</Link>
             </div>
   <div className="flex-none gap-2">
     <div className="form-control">
@@ -41,12 +41,9 @@ const NavBar = () => {
       </label>
       <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
         {user && <li>
-          <Link to="/profile/view" className="justify-between">
-            Profile
-          </Link>
-          <Link to="/requests/recieved" className="justify-between">
-            Requests Received
-          </Link>
+          <Link to="/profile/view" className="justify-between">Profile View</Link>
+          <Link to="/requests/recieved" className="justify-between">Connection Requests</Link>
+          <Link to="/friends" className="justify-between">Friends</Link>
         </li> }
         {!user && <li><Link to="/signup">SignUp</Link></li>}
         {!user && <li><Link to="/login">Login</Link></li>}

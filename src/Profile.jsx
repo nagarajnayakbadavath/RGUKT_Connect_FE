@@ -55,6 +55,7 @@ const Profile = () => {
             photourl,
           },{withCredentials:true});
           dispatch(addUser(res.data));
+          console.log(res.data);
           setToast(true);
           setTimeout(()=>{
             setToast(false);

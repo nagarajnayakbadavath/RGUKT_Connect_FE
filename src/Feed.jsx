@@ -1,11 +1,32 @@
-import React from 'react'
-import { useSelector } from 'react-redux';
+import React,{useEffect, useState} from 'react'
+import axios from 'axios';
 
-const Feed = ({users}) => {
-  const user=useSelector((store)=>store.user);
-  console.log("This are the users I got",{users});
+const Feed=()=> {
 
+  const [users,setUsers]=useState(null);
 
+  const getAllusers=async()=>{
+    try{
+      const res=await axios.get('http://localhost:3001/Allprofiles',{withCredentials:true});
+      setUsers(res.data);
+    }catch(err){
+      console.log(err.message);
+    }
+  }
+
+  useEffect(()=>{
+    getAllusers();
+  },[]);
+
+  const HandleSendRequest=async(userId)=>{
+    try{
+      console.log(userId)
+      const res=await axios.post(`http://localhost:3001/request/send/connect/${userId}`,{},{withCredentials:true});
+      console.log(res);
+    }catch(err){
+      console.log(err.message);
+    }
+  }
   return (
     <div className="flex flex-wrap">
             {users && users.length > 0 ? (
@@ -24,12 +45,10 @@ const Feed = ({users}) => {
                   </h2>
                   <p>{user.about}</p>
                   <div className="card-actions justify-end">
-                    <div className="badge badge-outline">Connect</div>
+                  <button className="btn btn-soft btn-success" onClick={()=>HandleSendRequest(user._id)}>Connect</button>
                   </div>
                 </div>
               </div>
-
-
           </div>
         ))
       ) : (

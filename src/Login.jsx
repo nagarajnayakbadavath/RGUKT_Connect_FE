@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const Login = ({isSignup}) => {
 
-  const [emailId,setEmailId]=useState('');
+  const [emailId,setEmailId]=useState('prabhas@gmail.com');
   const [password,setPassword]=useState('Naga_1136');
   const [firstName,setFirstName]=useState('');
   const [lastName,setLastName]=useState('');
@@ -25,11 +25,22 @@ const Login = ({isSignup}) => {
         password,
       },{withCredentials:true});
       dispatch(addUser(res.data));
+      // const users=await getAllusers();
+      // navigate("/feed",{state:{users}});
       navigate("/feed");
     }catch(err){
       console.log(err.message);
     }
   }
+
+  // const getAllusers=async()=>{
+  //   try{
+  //     const res=await axios.get('http://localhost:3001/Allprofiles',{withCredentials:true});
+  //     return res.data;
+  //   }catch(err){
+  //     console.log(err.message);
+  //   }
+  // }
 
   const handleSignUp=async()=>{
     try{
