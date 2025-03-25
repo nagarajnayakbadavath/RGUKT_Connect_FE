@@ -16,13 +16,13 @@ const Feed=()=> {
 
   useEffect(()=>{
     getAllusers();
-  },[]);
+  });
 
   const HandleSendRequest=async(userId)=>{
     try{
       console.log(userId)
       const res=await axios.post(`http://localhost:3001/request/send/connect/${userId}`,{},{withCredentials:true});
-      console.log(res);
+      console.log(res.data);
     }catch(err){
       console.log(err.message);
     }

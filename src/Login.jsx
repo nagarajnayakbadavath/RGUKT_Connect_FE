@@ -25,22 +25,13 @@ const Login = ({isSignup}) => {
         password,
       },{withCredentials:true});
       dispatch(addUser(res.data));
-      // const users=await getAllusers();
-      // navigate("/feed",{state:{users}});
       navigate("/feed");
     }catch(err){
       console.log(err.message);
     }
   }
 
-  // const getAllusers=async()=>{
-  //   try{
-  //     const res=await axios.get('http://localhost:3001/Allprofiles',{withCredentials:true});
-  //     return res.data;
-  //   }catch(err){
-  //     console.log(err.message);
-  //   }
-  // }
+
 
   const handleSignUp=async()=>{
     try{
@@ -107,7 +98,7 @@ const Login = ({isSignup}) => {
               <input type="text" placeholder={about} className="input input-bordered w-full max-w-xs" onChange={(e)=>setAbout(e.target.value)}/>
               </>)}
               <h1>{error?'something went wrong':``}</h1>
-              <button className="btn btn-outline btn-primary m-3 justify-center w-12" onClick={isSignup?handleSignUp:handleLogin}>{isSignup?'Singup':'Login'}</button>
+              <button className="btn btn-outline btn-primary m-3 justify-center w-15" onClick={isSignup?handleSignUp:handleLogin}>{isSignup?'Singup':'Login'}</button>
             </div>
     </div>
   )

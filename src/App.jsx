@@ -11,7 +11,7 @@ import RequestsReceived from './RequestsReceived';
 import UserCards from './UserCards';
 import Logo from './Logo';
 import Friends from './Friends';
-
+import Sent from './Sent';
 
 
 function App() {
@@ -29,6 +29,7 @@ function App() {
           <Route path="/feed" element={<Feed/>}/>
           <Route path="/profile/view" element={<Profile/>}/>
           <Route path="/friends" element={<Friends/>}/>
+          <Route path="/requests/sent" element={<Sent/>}/>
           <Route path="/requests/recieved" element={<RequestsReceived/>}/>
           <Route path="/userCards" element={<UserCards/>}/>
         </Route>
