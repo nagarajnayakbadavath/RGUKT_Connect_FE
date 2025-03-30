@@ -1,5 +1,7 @@
 import React,{useEffect, useState} from 'react'
 import axios from 'axios';
+import { API_URL } from "./config";
+
 
 const Friends = () => {
     
@@ -7,7 +9,7 @@ const Friends = () => {
 
     const HandleFriends=async()=>{
         try{
-            const res=await axios.get("http://localhost:3001/getAcceptedProfiles",{withCredentials:true});
+            const res=await axios.get(`${API_URL}/getAcceptedProfiles`,{withCredentials:true});
             console.log(res.data);
             setFriends(res.data);
         }catch(err){

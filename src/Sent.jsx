@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios';
+import {API_URL} from './config';
 
 const Sent = () => {
     const [user,setUser]=useState(null);
@@ -8,7 +9,7 @@ const Sent = () => {
 
     const getSentRequestData=async()=>{
         try{
-            const res=await axios.get("http://localhost:3001/requests/sent",{withCredentials:true});
+            const res=await axios.get(`${API_URL}/requests/sent`,{withCredentials:true});
             console.log(res.data);
             setUser(res.data);
         }catch(err){

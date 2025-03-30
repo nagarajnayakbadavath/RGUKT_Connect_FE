@@ -3,6 +3,7 @@ import React,{useState,useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser } from './utils/userSlice';
 import { useNavigate } from 'react-router-dom';
+import {API_URL} from './config';
 
 const Profile = () => {
   
@@ -23,7 +24,7 @@ const Profile = () => {
     if(!user){
     const fetchUser=async()=>{
       try{
-        const res=await axios.get("http://localhost:3001/profile/view",{withCredentials:true});
+        const res=await axios.get(`${API_URL}/profile/view`,{withCredentials:true});
         dispatch(addUser(res.data));
       }catch(err){
         console.log(err.message);
@@ -47,7 +48,7 @@ const Profile = () => {
   
   const profileEdit=async()=>{
         try{
-          const res=await axios.put("http://localhost:3001/profile/edit",{
+          const res=await axios.put(`${API_URL}/profile/edit`,{
             firstName,
             lastName,
             about,

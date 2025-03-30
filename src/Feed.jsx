@@ -1,5 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import axios from 'axios';
+import {API_URL} from './config'
 
 const Feed=()=> {
 
@@ -7,7 +8,7 @@ const Feed=()=> {
 
   const getAllusers=async()=>{
     try{
-      const res=await axios.get('http://localhost:3001/Allprofiles',{withCredentials:true});
+      const res=await axios.get(`${API_URL}/Allprofiles`,{withCredentials:true});
       setUsers(res.data);
     }catch(err){
       console.log(err.message);
@@ -21,7 +22,7 @@ const Feed=()=> {
   const HandleSendRequest=async(userId)=>{
     try{
       console.log(userId)
-      const res=await axios.post(`http://localhost:3001/request/send/connect/${userId}`,{},{withCredentials:true});
+      const res=await axios.post(`${API_URL}/request/send/connect/${userId}`,{},{withCredentials:true});
       console.log(res.data);
     }catch(err){
       console.log(err.message);

@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios';
+import {API_URL} from './config';
 
 const RequestsReceived = () => {
 
@@ -7,7 +8,7 @@ const RequestsReceived = () => {
 
   const GetRequest=async()=>{
     try{
-      const res=await axios.get('http://localhost:3001/requests/recieved',{withCredentials:true});
+      const res=await axios.get(`${API_URL}/requests/recieved`,{withCredentials:true});
       console.log(res.data);
       setRequest(res.data);
     }catch(err){
@@ -22,7 +23,7 @@ const RequestsReceived = () => {
 
   const HandleAccept=async(senderId)=>{
     try{
-      const res=await axios.put(`http://localhost:3001/request/${senderId}/accept`,{},{withCredentials:true});
+      const res=await axios.put(`${API_URL}/request/${senderId}/accept`,{},{withCredentials:true});
       console.log(res.data);
       setRequest((prevRequests) =>
         prevRequests.filter((request) => request.senderId !== senderId)
@@ -34,7 +35,7 @@ const RequestsReceived = () => {
 
   const HandleReject=async(senderId)=>{
     try{
-      const res=await axios.put(`http://localhost:3001/request/${senderId}/reject`,{},{withCredentials:true});
+      const res=await axios.put(`${API_URL}/request/${senderId}/reject`,{},{withCredentials:true});
       console.log(res.data);
       setRequest((prevRequests) =>
         prevRequests.filter((request) => request.senderId !== senderId)

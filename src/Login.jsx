@@ -3,6 +3,7 @@ import { addUser } from './utils/userSlice';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import {API_URL} from './config';
 
 const Login = ({isSignup}) => {
 
@@ -20,7 +21,7 @@ const Login = ({isSignup}) => {
 
   const handleLogin=async()=>{
     try{
-      const res=await axios.post('http://localhost:3001/login',{
+      const res=await axios.post(`${API_URL}/login`,{
         emailId,
         password,
       },{withCredentials:true});
@@ -35,7 +36,7 @@ const Login = ({isSignup}) => {
 
   const handleSignUp=async()=>{
     try{
-      const res=await axios.post("http://localhost:3001/signup",{
+      const res=await axios.post(`${API_URL}/signup`,{
         emailId,
         password,
         firstName,

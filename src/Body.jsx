@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Logo from './Logo';
 import axios from 'axios';
 import { addUser } from './utils/userSlice';
+import {API_URL} from './config';
 
 const Body = () => {
   const dispatch=useDispatch();
@@ -15,7 +16,7 @@ const Body = () => {
 
   const fetchUser=async()=>{
     try{
-      const res=await axios.get("http://localhost:3001/profile/view",{withCredentials:true});
+      const res=await axios.get(`${API_URL}/profile/view`,{withCredentials:true});
       console.log("The data is",res.data);
       dispatch(addUser(res.data));
     }catch(err){
