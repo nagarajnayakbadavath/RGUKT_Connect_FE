@@ -20,7 +20,7 @@ const Friends = () => {
     },[]);
 
   return (
-    <div>
+    <div className="flex">
         {friends?(
             friends.length>0?(
             <>
