@@ -25,7 +25,9 @@ const Login = ({isSignup}) => {
         emailId,
         password,
       },{withCredentials:true});
-      dispatch(addUser(res.data));
+      const { newuser, token } = res.data; // ✅ Extract user & token
+        localStorage.setItem("token", token);
+        dispatch(addUser(newuser));
       navigate("/feed");
     }catch(err){
       console.log(err.message);

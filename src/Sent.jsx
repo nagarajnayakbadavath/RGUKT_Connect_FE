@@ -4,12 +4,14 @@ import {API_URL} from './config';
 
 const Sent = () => {
     const [user,setUser]=useState(null);
+    const getToken=()=>localStorage.getItem('token');
 
 
 
     const getSentRequestData=async()=>{
         try{
-            const res=await axios.get(`${API_URL}/requests/sent`,{withCredentials:true});
+          const token=getToken();
+            const res=await axios.get(`${API_URL}/requests/sent`,{headers:{Authorization:`Bearer ${token}`},withCredentials:true});
             console.log(res.data);
             setUser(res.data);
         }catch(err){

@@ -6,9 +6,12 @@ const RequestsReceived = () => {
 
   const [request,setRequest]=useState([]);
 
+  const getToken=()=>localStorage.getItem('token');
+
   const GetRequest=async()=>{
     try{
-      const res=await axios.get(`${API_URL}/requests/recieved`,{withCredentials:true});
+      const token=getToken();
+      const res=await axios.get(`${API_URL}/requests/recieved`,{headers:{Authorization:`Bearer ${token}`},withCredentials:true});
       console.log(res.data);
       setRequest(res.data);
     }catch(err){
@@ -23,7 +26,8 @@ const RequestsReceived = () => {
 
   const HandleAccept=async(senderId)=>{
     try{
-      const res=await axios.put(`${API_URL}/request/${senderId}/accept`,{},{withCredentials:true});
+      const token=getToken();
+      const res=await axios.put(`${API_URL}/request/${senderId}/accept`,{},{headers:{Authorization:`Bearer ${token}`},withCredentials:true});
       console.log(res.data);
       setRequest((prevRequests) =>
         prevRequests.filter((request) => request.senderId !== senderId)
@@ -35,7 +39,8 @@ const RequestsReceived = () => {
 
   const HandleReject=async(senderId)=>{
     try{
-      const res=await axios.put(`${API_URL}/request/${senderId}/reject`,{},{withCredentials:true});
+      const token=getToken();
+      const res=await axios.put(`${API_URL}/request/${senderId}/reject`,{},{headers:{Authorization:`Bearer ${token}`},withCredentials:true});
       console.log(res.data);
       setRequest((prevRequests) =>
         prevRequests.filter((request) => request.senderId !== senderId)

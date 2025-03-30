@@ -13,10 +13,15 @@ const Body = () => {
   const navigate=useNavigate();
   const [users,setUsers]=useState({});
 
+  const getToken=()=>localStorage.getItem('token');
 
   const fetchUser=async()=>{
     try{
-      const res=await axios.get(`${API_URL}/profile/view`,{withCredentials:true});
+      const token=getToken();
+      if(!token){
+        console.error('token is null please do login');
+      }
+      const res=await axios.get(`${API_URL}/profile/view`,{headers:{ Authorization: `Bearer ${token}`},withCredentials:true});
       console.log("The data is",res.data);
       dispatch(addUser(res.data));
     }catch(err){

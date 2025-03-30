@@ -6,10 +6,11 @@ import { API_URL } from "./config";
 const Friends = () => {
     
     const [friends,setFriends]=useState(null);
-
+    const getToken=()=>localStorage.getItem('token');
     const HandleFriends=async()=>{
         try{
-            const res=await axios.get(`${API_URL}/getAcceptedProfiles`,{withCredentials:true});
+            const token=getToken();
+            const res=await axios.get(`${API_URL}/getAcceptedProfiles`,{headers:{Authorization:`Bearer ${token}`},withCredentials:true});
             console.log(res.data);
             setFriends(res.data);
         }catch(err){

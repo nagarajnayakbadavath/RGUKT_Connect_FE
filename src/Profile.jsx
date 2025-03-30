@@ -20,11 +20,14 @@ const Profile = () => {
   const [skills,setSkills]=useState('');
   const [toast,setToast]=useState(false);
 
+  const getToken=()=>localStorage.getItem('token');
+
   useEffect(()=>{
     if(!user){
     const fetchUser=async()=>{
       try{
-        const res=await axios.get(`${API_URL}/profile/view`,{withCredentials:true});
+        const token=getToken();
+        const res=await axios.get(`${API_URL}/profile/view`,{headers:{Authorization:`Bearer ${token}`},withCredentials:true});
         dispatch(addUser(res.data));
       }catch(err){
         console.log(err.message);
@@ -48,13 +51,14 @@ const Profile = () => {
   
   const profileEdit=async()=>{
         try{
+          const token=getToken();
           const res=await axios.put(`${API_URL}/profile/edit`,{
             firstName,
             lastName,
             about,
             skills,
             photourl,
-          },{withCredentials:true});
+          },{headers:{Authorization:`Bearer ${token}`},withCredentials:true});
           dispatch(addUser(res.data));
           console.log(res.data);
           setToast(true);

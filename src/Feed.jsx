@@ -6,9 +6,17 @@ const Feed=()=> {
 
   const [users,setUsers]=useState(null);
 
+  const getToken=()=>localStorage.getItem('token');
+
   const getAllusers=async()=>{
     try{
-      const res=await axios.get(`${API_URL}/Allprofiles`,{withCredentials:true});
+      const token=getToken();
+      if(!token){
+          console.error('token not found please login');
+          return;
+      }
+      console.log("the token you are getting from localStorage",token);
+      const res=await axios.get(`${API_URL}/Allprofiles`,{headers: { Authorization: `Bearer ${token}`}, withCredentials:true});
       setUsers(res.data);
     }catch(err){
       console.log(err.message);
@@ -17,12 +25,14 @@ const Feed=()=> {
 
   useEffect(()=>{
     getAllusers();
-  });
+  },[]);
 
   const HandleSendRequest=async(userId)=>{
     try{
-      console.log(userId)
-      const res=await axios.post(`${API_URL}/request/send/connect/${userId}`,{},{withCredentials:true});
+      const token=getToken();
+      console.log("the token is ",token);
+      console.log("sending request to ",userId);
+      const res=await axios.post(`${API_URL}/request/send/connect/${userId}`,{},{headers:{Authorization:`Bearer ${token}`},withCredentials:true});
       console.log(res.data);
     }catch(err){
       console.log(err.message);
