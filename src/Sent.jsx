@@ -22,7 +22,7 @@ const Sent = () => {
         getSentRequestData();
     },[]);
   return (
-    <div className="flex">
+    <div className="flex flex-wrap justify-center gap-4">
       {user?(user.length>0?(
         <>
         {user.map((profiles,index)=>(

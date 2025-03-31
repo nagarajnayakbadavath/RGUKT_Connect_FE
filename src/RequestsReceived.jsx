@@ -51,7 +51,7 @@ const RequestsReceived = () => {
   }
 
   return (
-    <div>
+    <div className="flex flex-wrap justify-center gap-4">
       {request?(
         request.length>0?(<div>
           {request.map((requests,index)=>(

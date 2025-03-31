@@ -39,7 +39,7 @@ const Feed=()=> {
     }
   }
   return (
-    <div className="flex flex-wrap">
+    <div className="flex flex-wrap justify-center gap-4">
             {users && users.length > 0 ? (
           users.map((user, index) => (
           <div key={index} className="user-card justify-center">

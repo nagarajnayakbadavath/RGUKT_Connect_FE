@@ -2,7 +2,7 @@ import React from 'react'
 
 const UserCards = (data) => {
   return (
-    <div>
+    <div className="flex flex-wrap justify-center gap-4">
         <h1>{data.firstName}</h1>
         <div className="card bg-base-100 w-96 shadow-xl">
                       <figure className="px-10 pt-10">

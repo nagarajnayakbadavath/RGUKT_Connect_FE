@@ -1,6 +1,7 @@
 import React,{useEffect, useState} from 'react'
 import axios from 'axios';
 import { API_URL } from "./config";
+import { Link } from 'react-router-dom';
 
 
 const Friends = () => {
@@ -23,7 +24,7 @@ const Friends = () => {
     },[]);
 
   return (
-    <div className="flex">
+    <div className="flex flex-wrap justify-center gap-4">
         {friends?(
             friends.length>0?(
             <>
@@ -38,7 +39,9 @@ const Friends = () => {
                         <div className="card-body">
                             <h2 className="card-title">{friend.firstName} {friend.lastName}</h2>
                             <div className="card-actions justify-end">
+                                <Link to={"/chat/"+friend._id}>
                             <button className="btn btn-primary">Chat</button>
+                            </Link>
                             </div>
                         </div>
                         </div>

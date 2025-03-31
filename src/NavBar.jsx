@@ -15,6 +15,8 @@ const NavBar = () => {
     try{
       const res=await axios.post(`${API_URL}/logout`,{},{withCredentials:true});
       dispatch(removeUser());
+      localStorage.removeItem('token');
+      sessionStorage.removeItem('token');
       return navigate('/');
     }catch(err){
       console.log(err.message);

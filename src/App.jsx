@@ -12,6 +12,7 @@ import UserCards from './UserCards';
 import Logo from './Logo';
 import Friends from './Friends';
 import Sent from './Sent';
+import Chat from './Chat';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
           <Route path="/requests/sent" element={<Sent/>}/>
           <Route path="/requests/recieved" element={<RequestsReceived/>}/>
           <Route path="/userCards" element={<UserCards/>}/>
+          <Route path='/chat/:targetUserId' element={<Chat/>}/>
         </Route>
       </Routes>
     </BrowserRouter>
