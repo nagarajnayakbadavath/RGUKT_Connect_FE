@@ -24,7 +24,7 @@ const Friends = () => {
     },[]);
 
   return (
-    <div className="flex flex-wrap justify-center gap-4">
+    <div className="flex flex-wrap justify-center gap-4 m-10">
         {friends?(
             friends.length>0?(
             <>

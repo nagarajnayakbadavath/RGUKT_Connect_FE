@@ -77,7 +77,7 @@ const Profile = () => {
 
 
   return (
-    <div className="flex flex-wrap justify-center gap-4">
+    <div className="flex flex-wrap justify-center gap-4 m-10">
       <div className="card bg-base-300 w-60 shadow-xl">
         <figure>
           <img src={user.photourl} alt="user photo" />

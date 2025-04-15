@@ -34,12 +34,13 @@ const Body = () => {
   },[]);
   
   return (
-    <div className="flex flex-col min-h-screen">
-      <NavBar/>
-      <main className="flex-grow"></main>
-      <Outlet/>
-      <Footer/>
-    </div>
+    <div className="flex flex-col min-h-screen bg-gradient-to-br from-pink-300 via-purple-300 to-indigo-400 text-white">
+  <NavBar className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white shadow-lg"/>
+  <div className="flex-grow">
+  <Outlet/>
+  </div>
+  <Footer className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white shadow-lg"/>
+ </div>
   )
 }
 

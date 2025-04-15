@@ -130,31 +130,31 @@ const Login = ({isSignup}) => {
     <div className="flex justify-center">
             <div className="form-control w-full max-w-xs">
               <label className="label justify-center font-serif font-bold">
-                <span className="label-text">{isSignup ?'Signup':'Login'}</span>
+                <span className="label-text text-black font-bold">{isSignup ?'Signup':'Login'}</span>
               </label>
 
               {isSignup && (
                 <>
                       <label className="label">
-                      <span className="label-text">FirstName:</span>
+                      <span className="label-text text-black font-bold">FirstName:</span>
                       </label>
-                      <input type="text" required placeholder={firstName} className="input input-bordered w-full max-w-xs" onChange={(e)=>setFirstName(e.target.value)}/>
+                      <input type="text" required value={firstName} placeholder='firstName' className="input input-bordered w-full max-w-xs" onChange={(e)=>setFirstName(e.target.value)}/>
                       {firstNameError && <span className="text-red-500 text-sm">{firstNameError}</span>}
                       <label className="label">
-                      <span className="label-text">LastName:</span>
+                      <span className="label-text text-black font-bold">LastName:</span>
                       </label>
-                      <input type="text" required placeholder={lastName} className="input input-bordered w-full max-w-xs" onChange={(e)=>setLastName(e.target.value)}/>
+                      <input type="text" required value={lastName} placeholder='enter lastName' className="input input-bordered w-full max-w-xs" onChange={(e)=>setLastName(e.target.value)}/>
                       {lastNameError && <span className="text-red-500 text-sm">{lastNameError}</span>}
                 </>
               )}
               {error && <span className="text-red-500 text-sm">{error}</span>}
               <label className="label">
-                <span className="label-text">EmailId:</span>
+                <span className="label-text text-black font-bold">EmailId:</span>
               </label>
-              <input type="text" value={emailId} required placeholder='ex:- b201136@rgukt.ac.in' className="input input-bordered w-full max-w-xs" onChange={(e)=>setEmailId(e.target.value)}/>
+              <input type="text" value={emailId} required placeholder='b201136@rgukt.ac.in' className="input input-bordered w-full max-w-xs" onChange={(e)=>setEmailId(e.target.value)}/>
               {emailIdError && <span className="text-red-500 text-sm">{emailIdError}</span>}
               <label className="label">
-                <span className="label-text">Password:</span>
+                <span className="label-text text-black font-bold">Password:</span>
               </label>
               <input type="text" value={password} required placeholder='enter your password' className="input input-bordered w-full max-w-xs" onChange={(e)=>setPassword(e.target.value)}/>
               {passwordError && <span className="text-red-500 text-sm">{passwordError}</span>}
@@ -162,23 +162,23 @@ const Login = ({isSignup}) => {
               {isSignup && (
               <>
               <label className="label">
-                <span className="label-text">PhotoURL:</span>
+                <span className="label-text text-black font-bold">PhotoURL:</span>
               </label>
-              <input type="text" required placeholder={photourl} className="input input-bordered w-full max-w-xs" onChange={(e)=>setPhotourl(e.target.value)}/>
+              <input type="text" required value={photourl} placeholder='paste photo url' className="input input-bordered w-full max-w-xs" onChange={(e)=>setPhotourl(e.target.value)}/>
               {photourlError && <span className="text-red-500 text-sm">{photourlError}</span>}
               <label className="label">
-              <span className="label-text">Skills:</span>
+              <span className="label-text text-black font-bold">Skills:</span>
               </label>
-              <input type="text" required placeholder={skills} className="input input-bordered w-full max-w-xs" onChange={(e)=>setSkills(e.target.value)}/>
+              <input type="text" required value={skills} placeholder='enter your skills' className="input input-bordered w-full max-w-xs" onChange={(e)=>setSkills(e.target.value)}/>
               {skillsError && <span className="text-red-500 text-sm">{skillsError}</span>}
               <label className="label">
-              <span className="label-text">About:</span>
+              <span className="label-text text-black font-bold">About:</span>
               </label>
-              <input type="text" required placeholder={about} className="input input-bordered w-full max-w-xs" onChange={(e)=>setAbout(e.target.value)}/>
+              <input type="text" required value={about} placeholder='Write your About!' className="input input-bordered w-full max-w-xs" onChange={(e)=>setAbout(e.target.value)}/>
               {aboutError && <span className="text-red-500 text-sm">{aboutError}</span>}
               </>)}
               <h1>{error?'something went wrong':``}</h1>
-              <button className="btn btn-outline btn-primary m-3 justify-center w-15" onClick={isSignup?handleSignUp:handleLogin}>{isSignup?'Signup':'Login'}</button>
+              <button className="btn btn-outline btn-primary m-3 justify-center w-15 text-black font-bold" onClick={isSignup?handleSignUp:handleLogin}>{isSignup?'Signup':'Login'}</button>
             </div>
     </div>
   )
