@@ -14,7 +14,6 @@ const Logo = () => {
         try{
             const res=await axios.get(`${API_URL}/Carouselprofiles`,{withCredentials:true});
             setProfiles(res.data);
-            // dispatch(addUser(res.data));
             dispatch(addCarouselProfiles(res.data));
         }catch(err){
           console.log(err.message);
